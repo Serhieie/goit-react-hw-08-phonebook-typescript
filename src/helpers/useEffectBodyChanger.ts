@@ -1,4 +1,4 @@
-export const BodyChanger = isThemeDark => {
+export const BodyChanger = (isThemeDark: boolean): void => {
   const root = document.documentElement;
 
   if (isThemeDark) {

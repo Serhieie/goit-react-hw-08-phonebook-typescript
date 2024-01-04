@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilterValue } from '../../redux/filter/filterSlice';
-import { getFilterValue, getTheme } from '../../redux/selectors';
+import { getFilterValue } from '../../redux/filter/filter-selectors';
+import { getTheme } from '../../redux/theme/theme-selectors';
 import { TbUserSearch } from 'react-icons/tb';
 
 export function Filter() {

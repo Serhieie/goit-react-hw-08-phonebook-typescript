@@ -1,4 +1,24 @@
-export const gradientClasses = {
+type GradientColor =
+  | 'red'
+  | 'orange'
+  | 'amber'
+  | 'yellow'
+  | 'lime'
+  | 'green'
+  | 'emerald'
+  | 'teal'
+  | 'sky'
+  | 'blue'
+  | 'indigo'
+  | 'violet'
+  | 'purple'
+  | 'fuchsia'
+  | 'pink'
+  | 'rose';
+
+type GradientClasses = { [key in GradientColor]: string[] };
+
+export const gradientClasses: GradientClasses = {
   red: ['from-red-300', 'to-red-900'],
   orange: ['from-orange-300', 'to-orange-900'],
   amber: ['from-amber-300', 'to-amber-900'],
@@ -17,4 +37,4 @@ export const gradientClasses = {
   rose: ['from-rose-300', 'to-rose-900'],
 };
 
-export const blurSizes = ['sm', 'md', 'lg', 'xl', '2xl', '3xl'];
+export const blurSizes: string[] = ['sm', 'md', 'lg', 'xl', '2xl', '3xl'];

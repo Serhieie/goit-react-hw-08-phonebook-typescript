@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { register, login, logout, fetchCurrentUser } from './operations-auth';
@@ -12,31 +12,31 @@ import {
   handleRejected,
 } from './hendlers-auth';
 import { initialStateAuth } from './initialStateAuth';
+import { AuthState } from 'redux/auth/redux-auth.type';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialStateAuth,
   reducers: {
-    changeUserName(state, action) {
+    changeUserName(state: AuthState, action: PayloadAction<string>) {
       state.user = { ...state.user, name: action.payload };
     },
-    changeUserEmail(state, action) {
+    changeUserEmail(state: AuthState, action: PayloadAction<string>) {
       state.user = { ...state.user, email: action.payload };
     },
-    changeUserToken(state, action) {
+    changeUserToken(state: AuthState, action: PayloadAction<string>) {
       state.token = action.payload;
     },
-    changeIsLoadingToken(state, action) {
-      state.isLoadingUser = { ...state, isLoadingUser: action.payload };
+    changeIsLoadingToken(state: AuthState, action: PayloadAction<boolean>) {
+      state.isLoadingUser = action.payload;
     },
-    changeUserStatus(state, action) {
+    changeUserStatus(state: AuthState, action: PayloadAction<boolean>) {
       state.isLoggedIn = action.payload;
     },
-    changeUserAvatar(state, action) {
+    changeUserAvatar(state: AuthState, action: PayloadAction<string>) {
       state.avatar = action.payload;
     },
   },
-
   extraReducers(builder) {
     builder
       .addCase(register.pending, handlePending)
@@ -63,7 +63,7 @@ const authPersistConfig = {
   whitelist: ['token', 'avatar', 'user'],
 };
 
-export const persistedAuthReducer = persistReducer(
+export const persistedAuthReducer = persistReducer<AuthState>(
   authPersistConfig,
   authSlice.reducer
 );

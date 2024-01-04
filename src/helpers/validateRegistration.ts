@@ -1,8 +1,35 @@
+import { Dispatch } from 'redux';
 import { register } from '../redux/auth/operations-auth';
 import { changeIsLoadingToken } from '../redux/auth/slice-auth';
 
-export const validateRegistration = userData => {
-  let errors = {};
+interface UserData {
+  name: string;
+  email: string;
+  password: string;
+}
+
+interface Errors {
+  name?: string;
+  email?: string;
+  password?: string;
+}
+
+interface Credentials {
+  username: string;
+  email: string;
+  password: string;
+}
+
+const convertToCredentials = (userData: UserData): Credentials => {
+  return {
+    username: userData.name,
+    email: userData.email,
+    password: userData.password,
+  };
+};
+
+export const validateRegistration = (userData: UserData): Errors => {
+  let errors: Errors = {};
 
   if (
     !userData.name ||
@@ -30,11 +57,15 @@ export const validateRegistration = userData => {
   return errors;
 };
 
-export const handleRegistration = (userData, dispatch) => {
-  const errors = validateRegistration(userData);
+export const handleRegistration = (
+  userData: UserData,
+  dispatch: Dispatch<any>
+): Errors | void => {
+  const errors: Errors = validateRegistration(userData);
 
   if (Object.keys(errors).length === 0) {
-    dispatch(register(userData));
+    const credentials: Credentials = convertToCredentials(userData);
+    dispatch(register(credentials));
   } else {
     dispatch(changeIsLoadingToken(false));
     return errors;

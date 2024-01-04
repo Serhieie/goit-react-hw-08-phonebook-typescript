@@ -1,20 +1,24 @@
 import { getRandomAvatarPath } from 'helpers/randomAvatar';
+import { AuthState } from 'redux/auth/redux-auth.type';
 
-const handlePending = state => {
+const handlePending = (state: AuthState): AuthState => {
   return { ...state, isLoadingUser: true };
 };
 
-const handleRejected = state => {
+const handleRejected = (state: AuthState): AuthState => {
   return { ...state, error: true, isLoadingUser: false };
 };
 
-const handleRegisterFulfilled = (state, action) => {
+const handleRegisterFulfilled = (
+  state: AuthState,
+  action: { payload: any }
+): AuthState => {
   if (action.payload && action.payload.user) {
     return {
       ...state,
       user: {
         name: action.payload.user?.name || '',
-        number: action.payload.user?.number || '',
+        email: action.payload.user?.email || '',
       },
       token: action.payload.token,
       avatar: getRandomAvatarPath(),
@@ -25,13 +29,16 @@ const handleRegisterFulfilled = (state, action) => {
   return state;
 };
 
-const handleRegisterRejected = (state, action) => {
+const handleRegisterRejected = (
+  state: AuthState,
+  action: { payload: any }
+): AuthState => {
   return {
     ...state,
     isLoadingUser: false,
     user: {
       name: action.payload.user?.name || '',
-      number: action.payload.user?.number || '',
+      email: action.payload.user?.email || '',
     },
     token: null,
     isLoggedIn: false,
@@ -39,7 +46,10 @@ const handleRegisterRejected = (state, action) => {
   };
 };
 
-const handleLoginFulfilled = (state, action) => {
+const handleLoginFulfilled = (
+  state: AuthState,
+  action: { payload: any }
+): AuthState => {
   if (action.payload && action.payload.user) {
     return {
       ...state,
@@ -53,13 +63,13 @@ const handleLoginFulfilled = (state, action) => {
   return state;
 };
 
-const handleLogoutFulfilled = state => {
+const handleLogoutFulfilled = (state: AuthState): AuthState => {
   return {
     ...state,
     isLoadingUser: false,
     user: {
       name: '',
-      number: '',
+      email: '',
     },
     token: null,
     isLoggedIn: false,
@@ -67,7 +77,10 @@ const handleLogoutFulfilled = state => {
   };
 };
 
-const handleFetchCurrentUserFulfilled = (state, action) => {
+const handleFetchCurrentUserFulfilled = (
+  state: AuthState,
+  action: { payload: any }
+): AuthState => {
   if (action.payload) {
     return {
       ...state,

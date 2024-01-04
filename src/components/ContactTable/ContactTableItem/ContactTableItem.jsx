@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import { PulseLoader } from 'react-spinners';
 import normalizePhoneNumber from 'helpers/numberNormalize';
@@ -100,14 +99,3 @@ export function ContactTableItem({ contact, index }) {
     </tr>
   );
 }
-
-const ContactType = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-};
-
-ContactTableItem.propTypes = {
-  contact: PropTypes.shape(ContactType).isRequired,
-  index: PropTypes.number,
-};

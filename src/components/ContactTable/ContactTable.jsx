@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { ContactTableItem } from './ContactTableItem/ContactTableItem';
-import { getFilterValue, getTheme } from '../../redux/selectors';
+import { getFilterValue } from '../../redux/filter/filter-selectors';
+import { getTheme } from '../../redux/theme/theme-selectors';
 import { TableHead } from './TableHead/TableHead';
 import PropTypes from 'prop-types';
 
@@ -74,8 +75,3 @@ export function ContactTable({ data, error, isLoading }) {
     </div>
   );
 }
-
-ContactTable.propTypes = {
-  error: PropTypes.string,
-  isLoading: PropTypes.bool,
-};

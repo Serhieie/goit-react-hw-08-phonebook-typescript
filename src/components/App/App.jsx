@@ -2,14 +2,14 @@ import React, { useEffect, lazy } from 'react';
 import PrivateRoute from '../PrivateRoute.jsx';
 import RestrictedRoute from '../RestrictedRoute.jsx';
 import { useDispatch } from 'react-redux';
-import { BodyChanger } from 'helpers/useEffectBodyChanger.js';
+import { BodyChanger } from 'helpers/useEffectBodyChanger.ts';
 import { Routes, Route } from 'react-router-dom';
 import Layout from 'components/Layout/Layout.jsx';
 import { NoPage } from './NoPage.jsx';
-import { fetchCurrentUser } from '../../redux/auth/operations-auth.js';
+import { fetchCurrentUser } from '../../redux/auth/operations-auth.ts';
 import { SuspenseLoader } from 'components/SuspenseLoader/SuspenseLoader.jsx';
-import { useTheme } from '../../helpers/hooks/theme-hook.js';
-import { useAuth } from '../../helpers/hooks/auth-selector-hook.js';
+import { useTheme } from '../../helpers/hooks/theme-hook.ts';
+import { useAuth } from '../../helpers/hooks/auth-selector-hook.ts';
 
 const HomePage = lazy(() => import('../../pages/homePage/HomePage.jsx'));
 const Registration = lazy(() =>

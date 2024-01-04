@@ -58,7 +58,3 @@ export const TableHead = ({ isThemeDark }) => {
     </thead>
   );
 };
-
-TableHead.propTypes = {
-  isThemeDark: PropTypes.bool.isRequired,
-};

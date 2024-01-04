@@ -1,5 +1,38 @@
+interface OverlaySettings {
+  position: 'fixed';
+  zIndex: number;
+  top: number | string;
+  left: number | string;
+  right: number | string;
+  bottom: number | string;
+  backgroundColor: string;
+}
+
+interface ContentSettings {
+  position: 'absolute';
+  top: string;
+  left: string;
+  right: string;
+  bottom: string;
+  marginRight: string;
+  transform: string;
+  border: string;
+  background: string;
+  overflow: string;
+  WebkitOverflowScrolling: string;
+  borderRadius: string;
+  outline: string;
+  padding: string;
+}
+
+interface Settings {
+  overlay: OverlaySettings;
+  content: ContentSettings;
+}
+
 const windowWidth = window.innerWidth;
-const settings = {
+
+const settings: Settings = {
   overlay: {
     position: 'fixed',
     zIndex: 999,
@@ -27,7 +60,7 @@ const settings = {
   },
 };
 
-const settings2 = {
+const settings2: Settings = {
   overlay: {
     position: 'fixed',
     zIndex: 999,

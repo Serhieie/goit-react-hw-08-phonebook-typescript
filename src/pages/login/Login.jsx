@@ -4,7 +4,8 @@ import { LoginFormButton } from './LoginFormButton';
 import { LoginInputs } from './LoginInputs';
 import { RegistrationShine } from 'components/Shine/RegistrationShine';
 import { login } from '../../redux/auth/operations-auth';
-import { getisLoadingUser, getTheme } from '../../redux/selectors';
+import { getTheme } from '../../redux/theme/theme-selectors';
+import { getisLoadingUser } from '../../redux/auth/selectors-auth';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 

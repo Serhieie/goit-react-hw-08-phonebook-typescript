@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { getTheme } from '../../redux/selectors';
+import { getTheme } from '../../redux/theme/theme-selectors';
 import { Header } from './Header.jsx';
 import { SuspenseLoader } from '../SuspenseLoader/SuspenseLoader.jsx';
 
