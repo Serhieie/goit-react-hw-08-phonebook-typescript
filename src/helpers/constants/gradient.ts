@@ -1,4 +1,4 @@
-type GradientColor =
+export type GradientColor =
   | 'red'
   | 'orange'
   | 'amber'

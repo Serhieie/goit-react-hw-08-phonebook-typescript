@@ -5,7 +5,7 @@ import { Contact } from './contact/redux-contacts.type';
 
 export interface RootState {
   filter: FilterState;
-  contacts: Contact & { isLoading: boolean };
+  contacts: Contact & { isLoading: boolean; error: boolean };
   theme: ThemeState & { showPass: boolean };
   auth: AuthState;
 }

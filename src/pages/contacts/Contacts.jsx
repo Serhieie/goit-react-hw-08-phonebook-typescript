@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 export default function Contacts({ isThemeDark }) {
-  const { data } = useGetAllContactsQuery();
+  const { data, isLoading, error } = useGetAllContactsQuery();
+  console.log(data);
   return (
     <div
       className="flex gap-4 sm:gap-0 justify-around mx-auto 
@@ -19,7 +20,12 @@ export default function Contacts({ isThemeDark }) {
         <title>Stone-Contacts</title>
       </Helmet>
       <ContactForm isThemeDark={isThemeDark} />
-      <FilterAndTable data={data} isThemeDark={isThemeDark} />
+      <FilterAndTable
+        data={data}
+        isThemeDark={isThemeDark}
+        error={error}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

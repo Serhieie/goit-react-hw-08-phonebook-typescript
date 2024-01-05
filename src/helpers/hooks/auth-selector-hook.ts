@@ -10,7 +10,7 @@ import {
   getAvatar,
 } from '../../redux/auth/selectors-auth';
 
-export const useAuth = (): {
+export interface useAuthReturn {
   isLoggedIn: boolean;
   isRefreshing: boolean;
   user: { name: string; email: string };
@@ -18,7 +18,9 @@ export const useAuth = (): {
   token: string | null;
   avatar: string;
   fullAuth: AuthState;
-} => {
+}
+
+export const useAuth = (): useAuthReturn => {
   const isLoggedIn: boolean = useSelector(getLogedIn);
   const isRefreshing: boolean = useSelector(getisLoadingUser);
   const user: { name: string; email: string } = useSelector(getUserData);

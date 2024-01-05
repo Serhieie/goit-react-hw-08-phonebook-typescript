@@ -1,4 +1,8 @@
 //main interface
+export interface ServerUserData {
+  name: string;
+  email: string;
+}
 export interface AuthState {
   user: { name: string; email: string };
   token: string | null;
