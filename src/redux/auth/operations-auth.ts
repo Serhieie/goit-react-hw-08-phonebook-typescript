@@ -3,7 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   TokenData,
   AuthStateForOptions,
-  Credentials,
   CredentialsLogin,
   CredentialsRegistration,
 } from './redux-auth.type';
