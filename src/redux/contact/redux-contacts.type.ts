@@ -1,15 +1,15 @@
 interface Contact {
   createdAt: string;
-  id?: string;
+  id: string;
   name: string;
-  phone: string;
+  number: string;
 }
 
 interface GetAllContactsResponse extends Array<Contact> {}
 
 interface PostContactRequest {
   name: string;
-  phone: string;
+  number: string;
 }
 
 interface DeleteContactRequest {

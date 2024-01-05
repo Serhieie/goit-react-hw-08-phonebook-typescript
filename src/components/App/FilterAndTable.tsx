@@ -1,8 +1,9 @@
 import { ContactTable } from 'components/ContactTable/ContactTable';
 import { Filter } from 'components/Filter/Filter';
+import { GetAllContactsResponse } from 'redux/contact/redux-contacts.type';
 
 interface FilterAndTableProps {
-  data: { createdAt: string; id: string; name: string; number: string }[];
+  data: GetAllContactsResponse | undefined;
   isThemeDark: boolean;
   error: boolean;
   isLoading: boolean;

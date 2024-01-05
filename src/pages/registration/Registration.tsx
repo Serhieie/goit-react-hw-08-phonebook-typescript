@@ -2,17 +2,19 @@ import { handleRegistration } from '../../helpers/validateRegistration';
 import { RegistrationFormButton } from './RegistrationFormButton';
 import { useEffect, useState } from 'react';
 import { Policy } from './Policy';
-import { RegLogInputs } from './RegistrInputs';
+import { RegLogInputs } from './RegistrationInputs/RegistrInputs';
 import { RegistrationShine } from 'components/Shine/RegistrationShine';
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { registrationSchema } from '../../helpers/constants/schema';
 import { useAuth } from '../../helpers/hooks/auth-selector-hook';
 import { useTheme } from '../../helpers/hooks/theme-hook';
+import { registrationFormStyles } from './Registration.styles';
 import { Helmet } from 'react-helmet';
+import { initialValuesTypes } from './Registration.types';
 
 //Formik state
-const initialValues = {
+const initialValues: initialValuesTypes = {
   name: '',
   email: '',
   password: '',
@@ -20,13 +22,16 @@ const initialValues = {
 };
 
 //Registration form is not have setting to LS option
-export default function Registration() {
-  const [windowSize, setWindowSize] = useState({
+const Registration: React.FC = () => {
+  const [windowSize, setWindowSize] = useState<{
+    width: number;
+    height: number;
+  }>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
   const dispatch = useDispatch();
-  const { isLoading } = useAuth();
+  const { isRefreshing } = useAuth();
   const { isThemeDark } = useTheme();
 
   const handleResize = () => {
@@ -45,7 +50,10 @@ export default function Registration() {
     };
   }, []);
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (
+    values: { name: string; email: string; password: string },
+    { resetForm }: { resetForm: () => void }
+  ) => {
     const { name, email, password } = values;
     const userData = {
       name: name.trim(),
@@ -58,10 +66,17 @@ export default function Registration() {
     resetForm();
   };
 
-  const formWidthClass =
-    windowSize.height > 460
-      ? 'md3:w-5/12 pb-16 pt-20 '
-      : 'md3:w-10/12  md2:mt-1 pb-8';
+  const formStyles: string = `
+          ${
+            windowSize.height > 460
+              ? 'md3:w-5/12 pb-16 pt-20 '
+              : 'md3:w-10/12  md2:mt-1 pb-8'
+          }  
+          ${
+            isThemeDark
+              ? ' shadow-shadowBoxDark from-smallWraperGradient1Dark to-smallWraperGradient2Dark '
+              : ' from-smallWraperGradient1 shadow-shadowBox to-smallWraperGradient2 '
+          } ${registrationFormStyles} `;
 
   return (
     <>
@@ -75,25 +90,14 @@ export default function Registration() {
         validateOnChange={false}
         validateOnBlur={false}
       >
-        <Form
-          autoComplete="off"
-          className={`
-          ${formWidthClass}  
-          ${
-            isThemeDark
-              ? ' shadow-shadowBoxDark from-smallWraperGradient1Dark to-smallWraperGradient2Dark '
-              : ' from-smallWraperGradient1 shadow-shadowBox to-smallWraperGradient2 '
-          }  flex gap-2 flex-col pt-10 1xl2:pt-12 1xl2:pb-10 1xl2:mb-4   px-10 rounded-sm
-          shadow-lg bg-gradient-to-tr md:py-7 md:pb-14 md:px-5 md:min-h-0 md:w-[96%]
-          transition-all  ssm2:pt-16 ssm2:mt-4  mx-auto z-60 mt-4 md2:pt-8 md2:mt-8 `}
-        >
+        <Form autoComplete="off" className={formStyles}>
           <h1 className="text-center text-4xl m-0 mt-1 md:text-2xl md2:text-2xl font-normal">
             Registration
           </h1>
           <RegLogInputs windowSize={windowSize} isThemeDark={isThemeDark} />
           <Policy windowSize={windowSize} />
           <RegistrationFormButton
-            isLoading={isLoading}
+            isLoading={isRefreshing}
             isThemeDark={isThemeDark}
           />
         </Form>
@@ -101,4 +105,6 @@ export default function Registration() {
       <RegistrationShine windowSize={windowSize} isThemeDark={isThemeDark} />
     </>
   );
-}
+};
+
+export default Registration;

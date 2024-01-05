@@ -5,9 +5,12 @@ import { useTheme } from '../../helpers/hooks/theme-hook';
 import { PiEyeClosedBold } from 'react-icons/pi';
 import { HiMiniEye } from 'react-icons/hi2';
 import { setShowPass } from '../../redux/theme/themeReducer';
-import PropTypes from 'prop-types';
+import { LoginInputsProps } from './Login.types';
 
-export const LoginInputs = ({ windowSize, isThemeDark }) => {
+export const LoginInputs: React.FC<LoginInputsProps> = ({
+  windowSize,
+  isThemeDark,
+}) => {
   const { showPassword } = useTheme();
   const dispatch = useDispatch();
   const user = useSelector(getUserData);
@@ -19,7 +22,9 @@ export const LoginInputs = ({ windowSize, isThemeDark }) => {
   };
 
   //setting email to LS
-  const handleInputEmailChange = event => {
+  const handleInputEmailChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     const value = event.target.value;
     dispatch(changeUserEmail(value));
   };
@@ -98,8 +103,4 @@ export const LoginInputs = ({ windowSize, isThemeDark }) => {
       </div>
     </>
   );
-};
-
-LoginInputs.propTypes = {
-  isThemeDark: PropTypes.bool.isRequired,
 };

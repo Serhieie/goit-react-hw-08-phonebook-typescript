@@ -4,9 +4,13 @@ import { useGetAllContactsQuery } from '../../redux/contact/contacts-api';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-export default function Contacts({ isThemeDark }) {
-  const { data, isLoading, error } = useGetAllContactsQuery();
-  console.log(data);
+interface ContactsProps {
+  isThemeDark: boolean;
+}
+
+const Contacts: React.FC<ContactsProps> = ({ isThemeDark }) => {
+  const { data, isLoading, error } = useGetAllContactsQuery(undefined);
+  const isError: boolean = !!error;
   return (
     <div
       className="flex gap-4 sm:gap-0 justify-around mx-auto 
@@ -23,13 +27,15 @@ export default function Contacts({ isThemeDark }) {
       <FilterAndTable
         data={data}
         isThemeDark={isThemeDark}
-        error={error}
+        error={isError}
         isLoading={isLoading}
       />
     </div>
   );
-}
+};
 
 Contacts.propTypes = {
   isThemeDark: PropTypes.bool.isRequired,
 };
+
+export default Contacts;

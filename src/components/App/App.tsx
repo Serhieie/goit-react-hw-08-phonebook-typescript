@@ -11,12 +11,12 @@ import { SuspenseLoader } from 'components/SuspenseLoader/SuspenseLoader';
 import { useTheme } from '../../helpers/hooks/theme-hook';
 import { useAuth } from '../../helpers/hooks/auth-selector-hook';
 
-const HomePage = lazy(() => import('../../pages/homePage/HomePage.jsx'));
+const HomePage = lazy(() => import('../../pages/homePage/HomePage'));
 const Registration = lazy(
-  () => import('../../pages/registration/Registration.jsx')
+  () => import('../../pages/registration/Registration')
 );
-const Login = lazy(() => import('../../pages/login/Login.jsx'));
-const Contacts = lazy(() => import('../../pages/contacts/Contacts.jsx'));
+const Login = lazy(() => import('../../pages/login/Login'));
+const Contacts = lazy(() => import('../../pages/contacts/Contacts'));
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,12 @@
 import { HomePageShine } from 'components/Shine/HomePageShine';
 import { Helmet } from 'react-helmet';
-import PropTypes from 'prop-types';
 
-export default function HomePage({ isThemeDark, name }) {
+interface HomePageProps {
+  isThemeDark: boolean;
+  name: string;
+}
+
+const HomePage: React.FC<HomePageProps> = ({ isThemeDark, name }) => {
   return (
     <div className="md:mt-[54px] ssm:mt-[48px] w-full 1xl2:mt-0">
       <Helmet>
@@ -57,9 +61,6 @@ export default function HomePage({ isThemeDark, name }) {
       <HomePageShine isThemeDark={isThemeDark} />
     </div>
   );
-}
-
-HomePage.propTypes = {
-  isThemeDark: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
 };
+
+export default HomePage;

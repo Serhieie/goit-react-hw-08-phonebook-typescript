@@ -6,26 +6,29 @@ import { RegistrationShine } from 'components/Shine/RegistrationShine';
 import { login } from '../../redux/auth/operations-auth';
 import { getTheme } from '../../redux/theme/theme-selectors';
 import { getisLoadingUser } from '../../redux/auth/selectors-auth';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
+import { CredentialsLogin } from 'redux/auth/redux-auth.type';
 import { Helmet } from 'react-helmet';
 
-export default function Login() {
+const Login: React.FC = () => {
   const dispatch = useDispatch();
-  const isThemeDark = useSelector(getTheme);
-  const isLoading = useSelector(getisLoadingUser);
-  const [windowSize, setWindowSize] = useState({
+  const isThemeDark: boolean = useSelector(getTheme);
+  const isLoading: boolean = useSelector(getisLoadingUser);
+  const [windowSize, setWindowSize] = useState<{
+    height: number;
+    width: number;
+  }>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
 
-  const handleResize = () => {
+  const handleResize = (): void => {
     setWindowSize({
       width: window.innerWidth,
       height: window.innerHeight,
     });
   };
 
-  //resize listener
   useEffect(() => {
     window.addEventListener('resize', handleResize);
 
@@ -34,19 +37,21 @@ export default function Login() {
     };
   }, []);
 
-  //form submit
-  const handleSubmit = async evt => {
+  const handleSubmit = async (
+    evt: FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     evt.preventDefault();
-    const { userEmail, userPassword } = evt.target.elements;
-    const userData = {
+    const { userEmail, userPassword } = evt.currentTarget.elements as any;
+    const userData: CredentialsLogin = {
       email: userEmail.value.trim(),
       password: userPassword.value.trim(),
     };
-    dispatch(login(userData));
-    userData.password = '';
+
+    //what is correct way to
+    dispatch(login(userData) as any);
+    userPassword.value = '';
   };
 
-  //dynamic styles for form
   const formWidthClass =
     windowSize.height > 460
       ? 'md3:w-5/12 pb-12'
@@ -80,9 +85,7 @@ export default function Login() {
           to={'/registration'}
         >
           <p
-            className={`${
-              isThemeDark ? 'text-darkFontDark' : 'text-darkFont'
-            } `}
+            className={`${isThemeDark ? 'text-darkFontDark' : 'text-darkFont'}`}
           >
             Have no account?
           </p>
@@ -98,4 +101,6 @@ export default function Login() {
       <RegistrationShine windowSize={windowSize} isThemeDark={isThemeDark} />
     </>
   );
-}
+};
+
+export default Login;

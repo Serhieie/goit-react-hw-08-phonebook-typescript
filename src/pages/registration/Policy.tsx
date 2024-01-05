@@ -3,30 +3,33 @@ import { FaCheck } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { getTheme } from '../../redux/theme/theme-selectors';
 
-export const Policy = ({ windowSize }) => {
-  const isThemeDark = useSelector(getTheme);
-  const [isChecked, setIsChecked] = useState(false);
+interface PolicyProps {
+  windowSize: { height: number; width: number };
+}
+
+export const Policy: React.FC<PolicyProps> = ({ windowSize }) => {
+  const isThemeDark: boolean = useSelector(getTheme);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   //just stilization of checkbox
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = (): void => {
     setIsChecked(prevState => !prevState);
   };
 
-  const widthClass = windowSize.height > 460 ? 'md3:mt-9' : 'md3:mt-2';
+  const widthClass: string = ` ${
+    windowSize.height > 460 ? 'md3:mt-9' : 'md3:mt-2'
+  }  mt-10 w-full max-w-[500px] mx-auto flex relative 1xl2:mt-3`;
+  const checkBoxStyle: string = `${
+    isThemeDark
+      ? 'border-none checked:bg-lightPartsColorDark bg-sky-700'
+      : 'border-darkFont checked:bg-buttonColor bg-lightPartsColor'
+  } mr-4 mt-0.5   appearance-none rounded border checked:border-transparent
+        focus:outline-none`;
 
   return (
-    <div
-      className={`
-    ${widthClass}
-    mt-10 w-full max-w-[500px] mx-auto flex relative 1xl2:mt-3`}
-    >
+    <div className={widthClass}>
       <input
-        className={`${
-          isThemeDark
-            ? 'border-none checked:bg-lightPartsColorDark bg-sky-700'
-            : 'border-darkFont checked:bg-buttonColor bg-lightPartsColor'
-        } mr-4 mt-0.5   appearance-none rounded border checked:border-transparent
-        focus:outline-none`}
+        className={checkBoxStyle}
         style={{ flex: 'none', width: '24px', height: '24px' }}
         name="user-privacy"
         type="checkbox"

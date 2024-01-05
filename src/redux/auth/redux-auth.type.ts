@@ -25,3 +25,14 @@ export interface Credentials {
   username: string;
   password: string;
 }
+
+export interface CredentialsLogin {
+  email: string;
+  password: string;
+}
+
+export interface CredentialsRegistration {
+  name: string;
+  email: string;
+  password: string;
+}

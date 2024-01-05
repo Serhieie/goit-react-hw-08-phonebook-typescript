@@ -1,6 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { TokenData, AuthStateForOptions, Credentials } from './redux-auth.type';
+import {
+  TokenData,
+  AuthStateForOptions,
+  Credentials,
+  CredentialsLogin,
+  CredentialsRegistration,
+} from './redux-auth.type';
 import {
   succesRegistrationMessage,
   failedRegistrationMessage,
@@ -20,7 +26,7 @@ export const token = {
 
 export const register = createAsyncThunk<
   any,
-  Credentials,
+  CredentialsRegistration,
   {
     rejectValue: string;
   }
@@ -41,11 +47,11 @@ export const register = createAsyncThunk<
 
 export const login = createAsyncThunk<
   any,
-  Credentials,
+  CredentialsLogin,
   {
     rejectValue: string;
   }
->('users/login', async (credentials, thunkApi) => {
+>('users/login', async (credentials: CredentialsLogin, { rejectWithValue }) => {
   try {
     const { data }: AxiosResponse<TokenData> = await axios.post(
       'users/login',
@@ -55,7 +61,7 @@ export const login = createAsyncThunk<
     return data;
   } catch (error) {
     failedLogin();
-    return thunkApi.rejectWithValue('Not correct user');
+    return rejectWithValue('Not correct user');
   }
 });
 

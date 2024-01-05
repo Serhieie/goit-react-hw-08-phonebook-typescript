@@ -22,7 +22,7 @@ export const ContactTableItem: React.FC<ContactTableItemProps> = ({
   };
 
   const handleDelete = (id: string): void => {
-    deleteContact(id);
+    deleteContact({ id });
     setIsOpen(false);
   };
 

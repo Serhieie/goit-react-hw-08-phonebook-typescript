@@ -15,14 +15,14 @@ interface Errors {
 }
 
 interface Credentials {
-  username: string;
+  name: string;
   email: string;
   password: string;
 }
 
 const convertToCredentials = (userData: UserData): Credentials => {
   return {
-    username: userData.name,
+    name: userData.name,
     email: userData.email,
     password: userData.password,
   };

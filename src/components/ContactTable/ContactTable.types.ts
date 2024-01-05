@@ -1,10 +1,6 @@
+import { GetAllContactsResponse } from 'redux/contact/redux-contacts.type';
 export interface ContactTableProps {
-  data: {
-    createdAt: string;
-    id: string;
-    name: string;
-    number: string;
-  }[];
+  data: GetAllContactsResponse | undefined;
   error: boolean;
   isLoading: boolean;
 }

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { contactsApi } from './contact/contacts-api.js';
+import { contactsApi } from './contact/contacts-api';
 import { persistedFilterReducer } from './filter/filterSlice';
 import { persistedThemeReducer } from './theme/themeReducer';
 import { persistedAuthReducer } from './auth/slice-auth';
