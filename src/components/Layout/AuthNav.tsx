@@ -12,14 +12,21 @@ export const AuthNav: React.FC<AuthNavProps> = ({ isThemeDark }) => {
     ${navLinkStyles}
   `;
   return (
-    <div className="flex gap-8 mr-auto">
-      <NavLink className={navStyles} to="/">
-        Login
-        <span className="w-full absolute scale-x-0  top-8 bg-transparent"></span>
-      </NavLink>
-      <NavLink className={`${navStyles} ssm:ml-0`} to="/registration">
-        Registration
-      </NavLink>
+    <div className="flex gap-8 w-full">
+      <div>
+        <NavLink className={`${navStyles}`} to="/">
+          StoneBook
+        </NavLink>
+      </div>
+      <div className="flex gap-8 ml-auto">
+        <NavLink className={navStyles} to="/login">
+          Login
+          <span className="w-full absolute scale-x-0  top-8 bg-transparent"></span>
+        </NavLink>
+        <NavLink className={`${navStyles} ssm:ml-0`} to="/registration">
+          Registration
+        </NavLink>
+      </div>
     </div>
   );
 };

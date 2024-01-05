@@ -12,6 +12,10 @@ module.exports = {
         'yellow-strange-stone': "url('/src/img/stone-yellow.webp')",
         'mobile-yellow-strange-stone':
           "url('/src/img/mobile-yellow-stone.webp')",
+        'yellow-book': "url('/src/img/books/NotLoggetHome-yellowBook.webp')",
+        'dark-book': "url('/src/img/books/NotLoggedHome-DarkBook.webp')",
+        'mobile-dark-book': "url('/src/img/books/mobile-DarkBook.webp')",
+        'mobile-yellow-book': "url('/src/img/books/mobile-yellowBook.webp')",
       },
       colors: {
         shadowBox: 'rgb(173, 124, 39)',

@@ -12,6 +12,9 @@ import { useTheme } from '../../helpers/hooks/theme-hook';
 import { useAuth } from '../../helpers/hooks/auth-selector-hook';
 
 const HomePage = lazy(() => import('../../pages/homePage/HomePage'));
+const NotLoggedHomePage = lazy(
+  () => import('../../pages/notLoggedHome/NotLoggedHome')
+);
 const Registration = lazy(
   () => import('../../pages/registration/Registration')
 );
@@ -43,6 +46,14 @@ export const App: React.FC = () => {
           path="/"
           element={
             <RestrictedRoute redirectTo="/home">
+              <NotLoggedHomePage isThemeDark={isThemeDark} />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/home">
               <Login />
             </RestrictedRoute>
           }
@@ -55,10 +66,11 @@ export const App: React.FC = () => {
             </RestrictedRoute>
           }
         />
+
         <Route
           path="/home"
           element={
-            <PrivateRoute redirectTo="/">
+            <PrivateRoute redirectTo="/login">
               <HomePage isThemeDark={isThemeDark} name={name.name} />
             </PrivateRoute>
           }
@@ -66,7 +78,7 @@ export const App: React.FC = () => {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/">
+            <PrivateRoute redirectTo="/login">
               <Contacts isThemeDark={isThemeDark} />
             </PrivateRoute>
           }

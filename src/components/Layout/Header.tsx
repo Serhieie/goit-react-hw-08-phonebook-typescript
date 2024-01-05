@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
   };
 
   const navStyles: string = `${
-    fullState.isLoggedIn ? 'ml-auto' : 'mr-auto'
+    fullState.isLoggedIn ? 'ml-auto  pr-[26%]' : 'pr-[4%] w-[90%]'
   } ${navigationStyles}`;
 
   return (
