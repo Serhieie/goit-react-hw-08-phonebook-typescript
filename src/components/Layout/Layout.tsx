@@ -20,7 +20,7 @@ const Layout: React.FC = () => {
     <div className={wrapperStyles}>
       <Header />
       <main className="w-full ssm:mt-6 md:mt-20 md3:mt-12 relative ">
-        <Suspense fallback={<SuspenseLoader isThemeDark={isThemeDark} />}>
+        <Suspense fallback={<SuspenseLoader />}>
           <Outlet />
         </Suspense>
       </main>

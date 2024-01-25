@@ -1,10 +1,11 @@
 import { generateExtraSmallShines } from './shines-creators/ExtraSmallShine';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { generateMediumShines } from './shines-creators/MediumShine';
 import { generateBigShines } from './shines-creators/BigShines';
-import { NoPageShineProps } from './Shines.types';
 import React, { useState, useEffect } from 'react';
 
-export const NoPageShine: React.FC<NoPageShineProps> = ({ isThemeDark }) => {
+export const NoPageShine: React.FC = () => {
+  const { isThemeDark } = useTheme();
   const [smallShines, setSmallShines] = useState<JSX.Element[]>([]);
   const [mediumShines, setMediumShines] = useState<JSX.Element[]>([]);
   const [bigShines, setBigShines] = useState<JSX.Element[]>([]);

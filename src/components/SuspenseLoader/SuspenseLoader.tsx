@@ -1,12 +1,8 @@
 import { PulseLoader } from 'react-spinners';
+import { useTheme } from 'helpers/hooks/theme-hook';
 
-interface SuspenseLoaderProps {
-  isThemeDark: Boolean;
-}
-
-export const SuspenseLoader: React.FC<SuspenseLoaderProps> = ({
-  isThemeDark,
-}) => {
+export const SuspenseLoader: React.FC = () => {
+  const { isThemeDark } = useTheme();
   return (
     <div
       className={`

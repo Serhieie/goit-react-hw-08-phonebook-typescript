@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { MainNavTypes } from './Layout.types';
 import { navLinkStyles } from './Layout-parts-styles/NavLink.styles';
 
-export const MainNav: React.FC<MainNavTypes> = ({
-  isThemeDark,
-  isLoggedIn,
-}) => {
+export const MainNav: React.FC<MainNavTypes> = ({ isLoggedIn }) => {
+  const { isThemeDark } = useTheme();
   const navStyles: string = `${
     isThemeDark
       ? 'text-blue-300 after:bg-blue-500 '

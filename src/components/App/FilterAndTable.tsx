@@ -1,20 +1,20 @@
 import { ContactTable } from 'components/ContactTable/ContactTable';
 import { Filter } from 'components/Filter/Filter';
 import { GetAllContactsResponse } from 'redux/contact/redux-contacts.type';
+import { useTheme } from 'helpers/hooks/theme-hook';
 
 interface FilterAndTableProps {
   data: GetAllContactsResponse | undefined;
-  isThemeDark: boolean;
   error: boolean;
   isLoading: boolean;
 }
 
 export const FilterAndTable: React.FC<FilterAndTableProps> = ({
   data,
-  isThemeDark,
   error,
   isLoading,
 }) => {
+  const { isThemeDark } = useTheme();
   //styles for theme changing
   const themeStyles: string = isThemeDark
     ? ' shadow-shadowBoxDark from-smallWraperGradient1Dark to-smallWraperGradient2Dark '

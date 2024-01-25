@@ -1,17 +1,18 @@
 import { settings, settings2 } from 'helpers/deleteModalSettings';
 import { useRef } from 'react';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import Modal, { Styles } from 'react-modal';
 import { ModalFordeleteProps } from './ContactTableItem.types';
 
 Modal.setAppElement('#root');
 
 export const ModalFordelete: React.FC<ModalFordeleteProps> = ({
-  isThemeDark,
   contact,
   modalIsOpen,
   closeModal,
   handleDelete,
 }) => {
+  const { isThemeDark } = useTheme();
   const subtitle = useRef<HTMLHeadingElement>(null);
   return (
     <Modal

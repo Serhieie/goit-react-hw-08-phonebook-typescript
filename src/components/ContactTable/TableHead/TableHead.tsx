@@ -1,8 +1,7 @@
-interface TableHeadProps {
-  isThemeDark: boolean;
-}
+import { useTheme } from 'helpers/hooks/theme-hook';
 
-export const TableHead: React.FC<TableHeadProps> = ({ isThemeDark }) => {
+export const TableHead: React.FC = () => {
+  const { isThemeDark } = useTheme();
   return (
     <thead className="text-lg  right-0 left-0 top-0 w-full  1xl2:text-2xl">
       <tr

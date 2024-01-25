@@ -1,14 +1,15 @@
 import { Field, ErrorMessage } from 'formik';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { useState } from 'react';
 import { PiEyeClosedBold } from 'react-icons/pi';
 import { HiMiniEye } from 'react-icons/hi2';
 import { InputProps } from '../Registration.types';
 
 export const PasswordAndConfirm: React.FC<InputProps> = ({
-  isThemeDark,
   withInputClass,
   fieldsStyle,
 }) => {
+  const { isThemeDark } = useTheme();
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
 

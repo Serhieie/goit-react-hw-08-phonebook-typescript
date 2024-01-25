@@ -77,7 +77,7 @@ const Login: React.FC = () => {
         <h1 className="text-center text-4xl m-0 md:text-2xl md2:text-2xl font-normal mt-2">
           Login
         </h1>
-        <LoginInputs windowSize={windowSize} isThemeDark={isThemeDark} />
+        <LoginInputs windowSize={windowSize} />
         <Link
           className={` ${
             isThemeDark ? 'text-teal-400 ' : 'text-teal-600 '
@@ -95,10 +95,9 @@ const Login: React.FC = () => {
           windowSize={windowSize}
           text="Sign in"
           isLoading={isLoading}
-          isThemeDark={isThemeDark}
         />
       </form>
-      <RegistrationShine windowSize={windowSize} isThemeDark={isThemeDark} />
+      <RegistrationShine windowSize={windowSize} />
     </>
   );
 };

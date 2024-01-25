@@ -1,8 +1,7 @@
-import { HomePageShineProps } from './Shines.types';
+import { useTheme } from 'helpers/hooks/theme-hook';
 
-export const HomePageShine: React.FC<HomePageShineProps> = ({
-  isThemeDark,
-}) => {
+export const HomePageShine: React.FC = () => {
+  const { isThemeDark } = useTheme();
   return (
     <>
       <div className="xl:hidden pointer-events-none w-32 h-32 bg-transparent bg-opacity-50  overflow-hidden rounded-lg blur-2xl absolute left-60 z-0 ssm:hidden top-72">

@@ -1,12 +1,10 @@
 import { LiaUserEditSolid } from 'react-icons/lia';
 import { FiPhoneMissed } from 'react-icons/fi';
 import { Field } from 'formik';
+import { useTheme } from 'helpers/hooks/theme-hook';
 
-interface InputsProps {
-  isThemeDark: boolean;
-}
-
-export const Inputs: React.FC<InputsProps> = ({ isThemeDark }) => {
+export const Inputs: React.FC = () => {
+  const { isThemeDark } = useTheme();
   return (
     <>
       <label

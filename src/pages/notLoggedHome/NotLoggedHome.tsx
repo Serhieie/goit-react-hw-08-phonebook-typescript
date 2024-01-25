@@ -1,11 +1,9 @@
 import { HomePageShine } from 'components/Shine/HomePageShine';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { Helmet } from 'react-helmet';
 
-interface NotLoggedHomeProps {
-  isThemeDark: boolean;
-}
-
-const NotLoggedHome: React.FC<NotLoggedHomeProps> = ({ isThemeDark }) => {
+const NotLoggedHome: React.FC = () => {
+  const { isThemeDark } = useTheme();
   return (
     <div className="md:mt-[54px] ssm:mt-[48px] w-full 1xl2:mt-0">
       <Helmet>
@@ -55,7 +53,7 @@ const NotLoggedHome: React.FC<NotLoggedHomeProps> = ({ isThemeDark }) => {
           </h1>
         </div>
       )}
-      <HomePageShine isThemeDark={isThemeDark} />
+      <HomePageShine />
     </div>
   );
 };

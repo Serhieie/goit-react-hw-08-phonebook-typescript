@@ -12,22 +12,15 @@ interface UserDisplayProps {
     fullAuth: AuthState;
   };
   handleLogout: () => void;
-  isThemeDark: boolean;
 }
 
 //MainNav types
 export interface MainNavTypes {
-  isThemeDark: boolean;
   isLoggedIn: boolean;
 }
 
 export interface NavLinkProps {
   isActive?: boolean;
-}
-
-//AuthNav types
-export interface AuthNavProps {
-  isThemeDark: boolean;
 }
 
 export type { UserDisplayProps };

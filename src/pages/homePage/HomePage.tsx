@@ -1,12 +1,13 @@
 import { HomePageShine } from 'components/Shine/HomePageShine';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { Helmet } from 'react-helmet';
 
 interface HomePageProps {
-  isThemeDark: boolean;
   name: string;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ isThemeDark, name }) => {
+const HomePage: React.FC<HomePageProps> = ({ name }) => {
+  const { isThemeDark } = useTheme();
   return (
     <div className="md:mt-[54px] ssm:mt-[48px] w-full 1xl2:mt-0">
       <Helmet>
@@ -58,7 +59,7 @@ const HomePage: React.FC<HomePageProps> = ({ isThemeDark, name }) => {
           </h1>
         </div>
       )}
-      <HomePageShine isThemeDark={isThemeDark} />
+      <HomePageShine />
     </div>
   );
 };

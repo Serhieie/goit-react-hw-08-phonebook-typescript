@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilterValue } from '../../redux/filter/filterSlice';
 import { getFilterValue } from '../../redux/filter/filter-selectors';
-import { getTheme } from '../../redux/theme/theme-selectors';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { TbUserSearch } from 'react-icons/tb';
 import {
   filterInputStyles,
@@ -13,7 +13,7 @@ import {
 export const Filter: React.FC = () => {
   const dispatch = useDispatch();
   const filterValue: string = useSelector(getFilterValue);
-  const isThemeDark: boolean = useSelector(getTheme);
+  const { isThemeDark } = useTheme();
 
   //need for saving in local storage
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

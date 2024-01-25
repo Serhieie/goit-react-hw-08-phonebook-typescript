@@ -1,12 +1,13 @@
 import { PulseLoader } from 'react-spinners';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { LoginFormButtonProps } from './Login.types';
 
 export const LoginFormButton: React.FC<LoginFormButtonProps> = ({
   windowSize,
   text,
   isLoading,
-  isThemeDark,
 }) => {
+  const { isThemeDark } = useTheme();
   //styles for btn
   const themeStyles: string = `
   ${windowSize.height > 460 ? 'md3:mt-24' : 'md3:mt-4  '} 

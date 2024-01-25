@@ -1,11 +1,12 @@
 import { PulseLoader } from 'react-spinners';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { RegistrationFormButtonProps } from './Registration.types';
 import { registrationSubmitBtnStyles } from './Registration.styles';
 
 export const RegistrationFormButton: React.FC<RegistrationFormButtonProps> = ({
   isLoading,
-  isThemeDark,
 }) => {
+  const { isThemeDark } = useTheme();
   const btnStyles: string = `${
     isThemeDark
       ? ' shadow-none hover:bg-buttonHoverColorDark text-buttonTextColorDark hover:text-lightPartsColorDark bg-buttonColorDark'

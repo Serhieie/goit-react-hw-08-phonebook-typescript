@@ -2,15 +2,11 @@ import { FaRegMoon } from 'react-icons/fa';
 import { FiSun } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../../redux/theme/themeReducer';
+import { useTheme } from 'helpers/hooks/theme-hook';
 
-interface ThemeSwitcherProps {
-  isThemeDark: boolean;
-}
-
-export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
-  isThemeDark,
-}) => {
+export const ThemeSwitcher: React.FC = () => {
   const dispatch = useDispatch();
+  const { isThemeDark } = useTheme();
 
   const toggleTheme = () => {
     dispatch(setTheme(!isThemeDark));

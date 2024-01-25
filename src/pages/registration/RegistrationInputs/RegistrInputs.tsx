@@ -1,12 +1,11 @@
 import { NameAndEmail } from './NameAndEmail';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { inputsStyles } from '../Registration.styles';
 import { RegLogInputsProps } from '../Registration.types';
 import { PasswordAndConfirm } from './PasswordAndConfirm';
 
-export const RegLogInputs: React.FC<RegLogInputsProps> = ({
-  windowSize,
-  isThemeDark,
-}) => {
+export const RegLogInputs: React.FC<RegLogInputsProps> = ({ windowSize }) => {
+  const { isThemeDark } = useTheme();
   const widthClass = windowSize.height > 460 ? 'md3:mt-2' : 'md3:mt-0';
   const withInputClass = windowSize.height > 460 ? 'md3:mt-2' : 'md3:mt-0';
 
@@ -24,7 +23,6 @@ export const RegLogInputs: React.FC<RegLogInputsProps> = ({
         fieldsStyle={fieldsStyle}
       />
       <PasswordAndConfirm
-        isThemeDark={isThemeDark}
         withInputClass={withInputClass}
         fieldsStyle={fieldsStyle}
       />

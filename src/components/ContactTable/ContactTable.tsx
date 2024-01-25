@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { ContactTableItem } from './ContactTableItem/ContactTableItem';
 import { getFilterValue } from '../../redux/filter/filter-selectors';
-import { getTheme } from '../../redux/theme/theme-selectors';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { TableHead } from './TableHead/TableHead';
 import { ContactTableProps } from './ContactTable.types';
 
@@ -12,7 +12,7 @@ export const ContactTable: React.FC<ContactTableProps> = ({
   isLoading,
 }) => {
   const filter: string = useSelector(getFilterValue);
-  const isThemeDark: boolean = useSelector(getTheme);
+  const { isThemeDark } = useTheme();
 
   const getVisibleContacts = useMemo(() => {
     const normalizedFilter = filter.toLowerCase();
@@ -64,7 +64,7 @@ export const ContactTable: React.FC<ContactTableProps> = ({
         mt-5 mb-5 block mx-auto overflow-auto w-full h-[490px] 
          ssm2:w-12/12 ssm2:p-0 ssm2:m-0 ssm2:text-base`}
       >
-        <TableHead isThemeDark={isThemeDark} />
+        <TableHead />
         <tbody className="max-h-fit max-w-full  text-xl ssm:text-base    ssm2:text-lg  1xl2:text-2xl">
           {!error &&
             getVisibleContacts.map((contact, index) => (

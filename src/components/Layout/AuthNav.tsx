@@ -1,16 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { navLinkStyles } from './Layout-parts-styles/NavLink.styles';
-import { AuthNavProps } from './Layout.types';
 
-export const AuthNav: React.FC<AuthNavProps> = ({ isThemeDark }) => {
-  // const navStyles = `${
-  //   isThemeDark
-  //     ? 'text-blue-300 after:bg-blue-500 '
-  //     : 'text-filterTextColor after:bg-filterTextColor '
-  // }
-  //   ${navLinkStyles}
-  // `;
-
+export const AuthNav: React.FC = () => {
+  const { isThemeDark } = useTheme();
   const navStyles = `${
     isThemeDark
       ? 'text-blue-300 after:bg-blue-500 '

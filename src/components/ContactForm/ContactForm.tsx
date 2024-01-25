@@ -6,14 +6,12 @@ import normalizePhoneNumber from 'helpers/numberNormalize';
 import normalizeName from 'helpers/nameNormalize';
 import { FormButton } from './FormButton/FormButton';
 import { ErrorMessages } from './ErrorMessages/ErrorMessages';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import {
   useGetAllContactsQuery,
   usePostContactMutation,
 } from '../../redux/contact/contacts-api';
 
-interface ContactFormProps {
-  isThemeDark: boolean;
-}
 interface initialValuesTypes {
   name: string;
   phone: string;
@@ -24,8 +22,9 @@ const initialValues: initialValuesTypes = {
   phone: '',
 };
 
-export const ContactForm: React.FC<ContactFormProps> = ({ isThemeDark }) => {
+export const ContactForm: React.FC = () => {
   const { data } = useGetAllContactsQuery(undefined);
+  const { isThemeDark } = useTheme();
   const [addContact, { isLoading }] = usePostContactMutation();
 
   const handleSubmit = (
@@ -77,9 +76,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isThemeDark }) => {
         <h1 className="text-center text-3xl m-0 md:text-xl md2:text-xl font-normal">
           Add Contact Field
         </h1>
-        <Inputs isThemeDark={isThemeDark} />
+        <Inputs />
         <ErrorMessages />
-        <FormButton isLoading={isLoading} isThemeDark={isThemeDark} />
+        <FormButton isLoading={isLoading} />
       </Form>
     </Formik>
   );

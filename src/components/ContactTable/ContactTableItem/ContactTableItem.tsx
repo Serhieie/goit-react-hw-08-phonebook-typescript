@@ -94,7 +94,6 @@ export const ContactTableItem: React.FC<ContactTableItemProps> = ({
         </button>
       </td>
       <ModalFordelete
-        isThemeDark={isThemeDark}
         contact={contact}
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}

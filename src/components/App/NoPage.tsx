@@ -1,12 +1,10 @@
 import { NoPageShine } from '../Shine/NoPageShine';
 import { getRandomAvatarPath } from 'helpers/randomAvatar';
 import { useMemo } from 'react';
+import { useTheme } from 'helpers/hooks/theme-hook';
 
-interface NoPageProps {
-  isThemeDark: boolean;
-}
-
-export const NoPage: React.FC<NoPageProps> = ({ isThemeDark }) => {
+export const NoPage: React.FC = () => {
+  const { isThemeDark } = useTheme();
   const avatarPath: string = useMemo(() => getRandomAvatarPath(), []);
 
   return (
@@ -34,7 +32,7 @@ export const NoPage: React.FC<NoPageProps> = ({ isThemeDark }) => {
           Page not found
         </p>
       </div>
-      <NoPageShine isThemeDark={isThemeDark} />
+      <NoPageShine />
     </div>
   );
 };

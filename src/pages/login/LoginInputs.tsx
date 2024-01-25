@@ -7,11 +7,8 @@ import { HiMiniEye } from 'react-icons/hi2';
 import { setShowPass } from '../../redux/theme/themeReducer';
 import { LoginInputsProps } from './Login.types';
 
-export const LoginInputs: React.FC<LoginInputsProps> = ({
-  windowSize,
-  isThemeDark,
-}) => {
-  const { showPassword } = useTheme();
+export const LoginInputs: React.FC<LoginInputsProps> = ({ windowSize }) => {
+  const { showPassword, isThemeDark } = useTheme();
   const dispatch = useDispatch();
   const user = useSelector(getUserData);
 

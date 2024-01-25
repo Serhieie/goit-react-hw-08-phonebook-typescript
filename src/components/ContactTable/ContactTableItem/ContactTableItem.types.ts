@@ -6,7 +6,6 @@ export interface TableContact {
 }
 
 export interface ModalFordeleteProps {
-  isThemeDark: boolean;
   contact: TableContact;
   modalIsOpen: boolean;
   closeModal: () => void;

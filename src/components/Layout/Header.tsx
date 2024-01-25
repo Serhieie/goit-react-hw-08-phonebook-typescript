@@ -14,7 +14,6 @@ import { useAuthReturn } from '../../helpers/hooks/auth-selector-hook';
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
-  const isThemeDark: boolean = useSelector(getTheme);
   const fullState: useAuthReturn = useAuth();
 
   //logout operation
@@ -29,20 +28,13 @@ export const Header: React.FC = () => {
 
   return (
     <header className={`${headerStyles}`}>
-      <UserDisplay
-        fullState={fullState}
-        handleLogout={handleLogout}
-        isThemeDark={isThemeDark}
-      />
-      <ThemeSwitcher isThemeDark={isThemeDark} />
+      <UserDisplay fullState={fullState} handleLogout={handleLogout} />
+      <ThemeSwitcher />
       <nav className={navStyles}>
         {fullState.isLoggedIn && fullState.token ? (
-          <MainNav
-            isThemeDark={isThemeDark}
-            isLoggedIn={fullState.isLoggedIn}
-          />
+          <MainNav isLoggedIn={fullState.isLoggedIn} />
         ) : (
-          <AuthNav isThemeDark={isThemeDark} />
+          <AuthNav />
         )}
       </nav>
     </header>

@@ -4,11 +4,7 @@ import { useGetAllContactsQuery } from '../../redux/contact/contacts-api';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-interface ContactsProps {
-  isThemeDark: boolean;
-}
-
-const Contacts: React.FC<ContactsProps> = ({ isThemeDark }) => {
+const Contacts: React.FC = () => {
   const { data, isLoading, error } = useGetAllContactsQuery(undefined);
   const isError: boolean = !!error;
   return (
@@ -23,13 +19,8 @@ const Contacts: React.FC<ContactsProps> = ({ isThemeDark }) => {
       <Helmet>
         <title>Stone-Contacts</title>
       </Helmet>
-      <ContactForm isThemeDark={isThemeDark} />
-      <FilterAndTable
-        data={data}
-        isThemeDark={isThemeDark}
-        error={isError}
-        isLoading={isLoading}
-      />
+      <ContactForm />
+      <FilterAndTable data={data} error={isError} isLoading={isLoading} />
     </div>
   );
 };

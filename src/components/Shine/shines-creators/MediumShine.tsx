@@ -1,4 +1,5 @@
 import { getRandomNumber } from '../../../helpers/getRandomNumber';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import {
   gradientClasses,
   blurSizes,
@@ -6,7 +7,8 @@ import {
 } from 'helpers/constants/gradient';
 import { ShineProps } from '../Shines.types';
 
-const MediumShine: React.FC<ShineProps> = ({ isThemeDark, left, top }) => {
+const MediumShine: React.FC<ShineProps> = ({ left, top }) => {
+  const { isThemeDark } = useTheme();
   //operations with  helpers static object
   const colorKeys = Object.keys(gradientClasses) as GradientColor[];
   const randomColorKey: GradientColor =
@@ -63,13 +65,7 @@ const generateMediumShines = ({
     let top: number = getRandomNumber(paddingTopBottom, maxHeight);
 
     shines.push(
-      <MediumShine
-        key={i}
-        isThemeDark={isThemeDark}
-        left={left}
-        top={top}
-        blurSize={blurSize}
-      />
+      <MediumShine key={i} left={left} top={top} blurSize={blurSize} />
     );
   }
   return shines;

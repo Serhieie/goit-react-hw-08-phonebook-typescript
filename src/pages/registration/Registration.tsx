@@ -94,15 +94,12 @@ const Registration: React.FC = () => {
           <h1 className="text-center text-4xl m-0 mt-1 md:text-2xl md2:text-2xl font-normal">
             Registration
           </h1>
-          <RegLogInputs windowSize={windowSize} isThemeDark={isThemeDark} />
+          <RegLogInputs windowSize={windowSize} />
           <Policy windowSize={windowSize} />
-          <RegistrationFormButton
-            isLoading={isRefreshing}
-            isThemeDark={isThemeDark}
-          />
+          <RegistrationFormButton isLoading={isRefreshing} />
         </Form>
       </Formik>
-      <RegistrationShine windowSize={windowSize} isThemeDark={isThemeDark} />
+      <RegistrationShine windowSize={windowSize} />
     </>
   );
 };

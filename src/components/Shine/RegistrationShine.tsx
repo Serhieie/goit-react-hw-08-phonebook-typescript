@@ -1,9 +1,10 @@
 import { RegistrationShineProps } from './Shines.types';
+import { useTheme } from 'helpers/hooks/theme-hook';
 
 export const RegistrationShine: React.FC<RegistrationShineProps> = ({
   windowSize,
-  isThemeDark,
 }) => {
+  const { isThemeDark } = useTheme();
   const formWidthClass: string = windowSize.height > 440 ? 'block' : 'hidden';
   return (
     <div className={`${formWidthClass}`}>

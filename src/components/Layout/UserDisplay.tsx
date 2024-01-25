@@ -1,11 +1,12 @@
 import { FiLogOut } from 'react-icons/fi';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { UserDisplayProps } from './Layout.types';
 
 export const UserDisplay: React.FC<UserDisplayProps> = ({
   fullState,
   handleLogout,
-  isThemeDark,
 }) => {
+  const { isThemeDark } = useTheme();
   return (
     <>
       {fullState.isLoggedIn && fullState.token ? (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from 'helpers/hooks/theme-hook';
 import { getRandomNumber } from '../../../helpers/getRandomNumber';
 import {
   gradientClasses,
@@ -7,7 +8,8 @@ import {
 } from 'helpers/constants/gradient';
 import { ShineProps } from '../Shines.types';
 
-const ExtraSmallShine: React.FC<ShineProps> = ({ isThemeDark, left, top }) => {
+const ExtraSmallShine: React.FC<ShineProps> = ({ left, top }) => {
+  const { isThemeDark } = useTheme();
   //operations with  helpers static object
   const colorKeys = Object.keys(gradientClasses) as GradientColor[];
   const randomColorKey: GradientColor =
@@ -70,13 +72,7 @@ const generateExtraSmallShines = ({
     }
 
     shines.push(
-      <ExtraSmallShine
-        key={i}
-        isThemeDark={isThemeDark}
-        left={left}
-        top={top}
-        blurSize={blurSize}
-      />
+      <ExtraSmallShine key={i} left={left} top={top} blurSize={blurSize} />
     );
   }
   return shines;
