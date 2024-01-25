@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getTheme } from '../../redux/theme/theme-selectors';
+import { useDispatch } from 'react-redux';
 import { ThemeSwitcher } from '../App/ThemeSwitcher';
 import { AuthNav } from './AuthNav';
 import { MainNav } from './MainNav';
