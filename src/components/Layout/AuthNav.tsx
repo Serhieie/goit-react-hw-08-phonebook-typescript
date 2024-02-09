@@ -4,6 +4,7 @@ import { navLinkStyles } from './Layout-parts-styles/NavLink.styles';
 
 export const AuthNav: React.FC = () => {
   const { isThemeDark } = useTheme();
+
   const navStyles = `${
     isThemeDark
       ? 'text-blue-300 after:bg-blue-500 '
@@ -11,6 +12,7 @@ export const AuthNav: React.FC = () => {
   } ${({ isActive }: { isActive: boolean }): string =>
     isActive ? 'active' : ''} 
         ${navLinkStyles}`;
+
   return (
     <div className="flex gap-8 w-full">
       <div>
