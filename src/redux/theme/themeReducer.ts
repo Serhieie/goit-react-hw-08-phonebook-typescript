@@ -24,7 +24,7 @@ export const themeSlice = createSlice({
 const persistConfig = {
   key: 'theme',
   storage,
-  blacklist: ['contacts', 'form', 'filter'],
+  blacklist: ['showPass'],
 };
 
 export const persistedThemeReducer = persistReducer<ThemeState>(

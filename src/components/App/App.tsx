@@ -21,8 +21,6 @@ const Registration = lazy(
 const Login = lazy(() => import('../../pages/login/Login'));
 const Contacts = lazy(() => import('../../pages/contacts/Contacts'));
 
-
-
 export const App: React.FC = () => {
   const dispatch = useDispatch();
   const { isThemeDark } = useTheme();
@@ -40,7 +38,7 @@ export const App: React.FC = () => {
   }, [isThemeDark]);
 
   return isRefreshing ? (
-    <SuspenseLoader  />
+    <SuspenseLoader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -81,12 +79,12 @@ export const App: React.FC = () => {
           path="/contacts"
           element={
             <PrivateRoute redirectTo="/login">
-              <Contacts  />
+              <Contacts />
             </PrivateRoute>
           }
         />
 
-        <Route path="*" element={<NoPage/>} />
+        <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
   );
